@@ -1,15 +1,15 @@
-# &, |, -, ^
-# return new set:
-# A.union(B)         A | B
-# A.intersection(B)  A & B
-# A.difference(B)    A - B
-# A.symmetric_difference(B)  A ^ B
-
-# return same set
-# A.update(B)               A |= B
-# A.intersection_update(B)  A &= B
-# A.difference_update(B)   A -= B
-# A.symmetric_difference_update(B) A ^= B
+"""
+    return new set:
+A.union(B)         A | B
+A.intersection(B)  A & B
+A.difference(B)    A - B
+A.symmetric_difference(B)  A ^ B
+    return same set
+A.update(B)               A |= B
+A.intersection_update(B)  A &= B
+A.difference_update(B)   A -= B
+A.symmetric_difference_update(B) A ^= B
+"""
 
 def count_of_matching_numbers():
     """find the count of numbers that are in both the first line and the second."""
