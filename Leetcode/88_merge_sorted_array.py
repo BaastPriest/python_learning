@@ -6,5 +6,6 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        nums1 = nums1[:m] + nums2[:n]
-        return nums1.sort()
+        for i in range(0, n):
+            nums1[m + i] = nums2[i]
+        nums1.sort()
