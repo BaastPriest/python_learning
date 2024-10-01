@@ -1,3 +1,6 @@
+import re
+
+
 def sum_min_max_keys():
     my_dict = {1.12: 'aa', 67.9: 45, 3.11: 'ccc', 7.9: 'dd', 9.2: 'ee', 7.1: 'ff', 0.12: 'qq', 1.91: 'aa',
                10.12: [1, 2, 3], 99.0: {9, 0, 1}}
@@ -61,3 +64,70 @@ def string_representation(number):
     for c in my_num:
         print(num_str_dict[c], end=' ')
     """print(*[digits[key] for key in input()])"""
+
+
+def displays_info_about_course_by_course_number(number, info):
+    print(f'{number}: {info[number]["audience_number"]}, {info[number]["teacher"]}, {info[number]["time"]} ')
+    """
+    audience, teacher, time = my_dict[course_number]
+    print(f'{course_number}: {audience}, {teacher}, {time}')
+    """
+
+
+course_info = {'CS101': {'audience_number': '3004', 'teacher': 'Tim', 'time': '8:00'},
+               'CS102': {'audience_number': '4501', 'teacher': 'Maria', 'time': '9:00'},
+               'CS103': {'audience_number': '6755', 'teacher': 'Robert', 'time': '10:00'},
+               'NT110': {'audience_number': '1244', 'teacher': 'Rosa', 'time': '11:00'},
+               'CM241': {'audience_number': '1411', 'teacher': 'Li', 'time': '13:00'}}
+
+
+def pushbutton_phones_text_messages(text_msg, pushbtn_table):
+    """
+    a program that displays the keystrokes required to type a message
+    :return:
+    """
+    allowed_chars = "".join(pushbutton_phone_table.values())
+    pattern = f"[^{re.escape(allowed_chars)}]"
+    filtered_text = re.sub(pattern, '', text_msg.upper())
+    for target_letter in filtered_text:
+        for key, value in pushbtn_table.items():
+            if target_letter in value:
+                index = value.index(target_letter) + 1
+                print(str(key) * index, end="")
+
+
+pushbutton_phone_table = {1: ".,?!:", 2: "ABC", 3: "DEF", 4: "GHI", 5: "JKL", 6: "MNO", 7: "PQRS", 8: "TUV", 9: "WXYZ",
+                          0: " "}
+
+
+def output_msg_encoded_morse_code_1(text, morse_code_table):
+    allowed_chars = "".join(morse_code_table.keys())
+    pattern = f"[^{re.escape(allowed_chars)}]"
+    filtered_text = re.sub(pattern,'', text.upper())
+    for letter in filtered_text:
+        print(morse_code_table[letter],end=" ")
+
+
+morse_code = {'A': '.-', 'J': '.---', 'S': '...', '1': '.----',
+              'B': '-...', 'K': '-.-', 'T': '-', '2': '..---',
+              'C': '-.-.', 'L': '.-..', 'U': '..-', '3': '...--',
+              'D': '-..', 'M': '--', 'V': '...-', '4': '....-',
+              'E': '.', 'N': '-.', 'W': '.--', '5': '.....',
+              'F': '..-.', 'O': '---', 'X': '-..-', '6': '-....',
+              'G': '--.', 'P': '.--.', 'Y': '-.--', '7': '--...',
+              'H': '....', 'Q': '--.-', 'Z': '--..', '8': '---..',
+              'I': '..', 'R': '.-.', '0': '-----', '9': '----.'}
+
+
+def output_msg_encoded_morse_code_2(text):
+    letters = [c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789']
+    morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---',
+             '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '-----', '.----', '..---',
+             '...--', '....-', '.....', '-....', '--...', '---..', '----.']
+    morse_dict = dict(zip(letters, morse))
+    for c in text.upper():
+        if c in morse_dict.keys():
+            print(morse_dict[c], end=" ")
+
+
+output_msg_encoded_morse_code_2("interstellar")
